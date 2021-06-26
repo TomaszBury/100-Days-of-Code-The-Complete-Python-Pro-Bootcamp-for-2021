@@ -16,7 +16,7 @@ It stands for
 #Subtraction.
 PEMDAS is often expanded to the mnemonic 
 #"Please Excuse My Dear Aunt Sally" 
-in schools.[12]
+in schools.
 
 ##http://cis.bentley.edu/sandbox/wp-content/uploads/Documentation-on-f-strings.pdf
 
