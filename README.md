@@ -17,3 +17,11 @@ It stands for
 PEMDAS is often expanded to the mnemonic 
 #"Please Excuse My Dear Aunt Sally" 
 in schools.[12]
+
+##http://cis.bentley.edu/sandbox/wp-content/uploads/Documentation-on-f-strings.pdf
+
+print(f'Number\t\tSquare\t\t\tCube') 
+for x in range(1, 11):     
+    x = float(x)     
+    print(f'{x:5.2f}\t\t{x*x:6.2f}\t\t{x*x*x:8.2f}')
+
