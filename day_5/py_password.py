@@ -6,9 +6,28 @@ numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 
 print("Welcome to the PyPassword Generator!")
+'''
 nr_letters= int(input("How many letters would you like in your password?\n")) 
 nr_symbols = int(input(f"How many symbols would you like?\n"))
 nr_numbers = int(input(f"How many numbers would you like?\n"))
+'''
+letters_num = int(input("How long would you like in your password to be?\n"))
+nr_letters= 0
+nr_symbols = 0
+nr_numbers = 0
+
+i = letters_num - 1
+
+while i >= 0:
+    if random.choice([True, False]):
+        nr_letters += 1
+        i -= 1
+    elif random.choice([True, False]):
+        nr_symbols += 1
+        i -= 1
+    elif random.choice([True, False]):
+        nr_numbers += 1
+        i -= 1
 
 #Eazy Level - Order not randomised:
 #e.g. 4 letter, 2 symbol, 2 number = JduE&!91
@@ -24,9 +43,15 @@ for i in range(0,nr_symbols):
 
 for i in range(0,nr_numbers):
     password.append(numbers[random.randint(0,len(numbers)-1)])
+
+pas_dis = ""
+for char in password:
+    pas_dis += char
+print(pas_dis)
 '''
 #Hard Level - Order of characters randomised:
 #e.g. 4 letter, 2 symbol, 2 number = g^2jk8&P
+'''
 for i in range(0,nr_letters):
     password.append(letters[random.randint(0,len(letters)-1)])
 
@@ -36,7 +61,35 @@ for i in range(0,nr_symbols):
 for i in range(0,nr_numbers):
     password.append(numbers[random.randint(0,len(numbers)-1)])
 
-pas_dis = ""
+password_display = ""
 for char in password:
-    pas_dis += char
-print(pas_dis)
+    password_display += char
+print(password_display)
+
+password_filnal_form =""
+for i in range(0,len(password)):
+    password_filnal_form += password.pop(random.randint(0,len(password)-1))
+
+print(password_filnal_form)
+'''
+'''
+password = ""
+for i in range(0,nr_letters):
+    password += random.choice(letters)
+for i in range(0,nr_numbers):
+    password += random.choice(numbers)
+for i in range(0,nr_symbols):
+    password += random.choice(symbols)
+print(password)
+'''
+password_list = []
+for i in range(0,nr_letters):
+    password_list.append(random.choice(letters))
+for i in range(0,nr_numbers):
+    password_list.append(random.choice(numbers))
+for i in range(0,nr_symbols):
+    password_list.append(random.choice(symbols))
+
+random.shuffle(password_list)
+
+print(f"You'r password: {''.join(password_list)}")
