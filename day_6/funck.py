@@ -6,7 +6,7 @@ print(num_char)
 '''
 
 def my_function():
-print("Hello")
+    print("Hello")
 
 print("bye")
 
