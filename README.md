@@ -39,8 +39,12 @@ for x in range(1, 11):
 
 https://www.geeksforgeeks.org/generating-random-number-list-in-python/
 
+https://www.python.org/dev/peps/pep-0008/
+
 # FUN:
 
 https://haveibeenpwned.com/
 
 https://en.wikipedia.org/wiki/SAT#Percentiles_for_total_scores_(2019)
+
+https://reeborg.ca/reeborg.html?lang=en&mode=python&menu=worlds%2Fmenus%2Freeborg_intro_en.json&name=Alone&url=worlds%2Ftutorial_en%2Falone.json
