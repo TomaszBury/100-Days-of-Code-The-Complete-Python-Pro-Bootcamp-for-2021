@@ -33,7 +33,6 @@ def prime_checker(number):
             print("It's a prime number.")
         else:
             print("It's not a prime number.")
-
     else:
         print("It's not a prime number.")
 '''
