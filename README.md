@@ -30,6 +30,8 @@ in schools.
 
 # CODE in Python:
 
+### https://www.delftstack.com/howto/python/python-clear-console/
+
 ### http://cis.bentley.edu/sandbox/wp-content/uploads/Documentation-on-f-strings.pdf
 
 print(f'Number\t\tSquare\t\t\tCube')
