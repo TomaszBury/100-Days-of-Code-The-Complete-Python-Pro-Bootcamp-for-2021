@@ -32,3 +32,7 @@ travel_log = [
   "total_visits": 5,
 },
 ]
+
+print(len(travel_log))
+for key, value in capitals.items():
+    print(value)
