@@ -15,6 +15,7 @@
 # https://games.washingtonpost.com/games/blackjack/
 import random
 cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+game = True
 answer = ""
 computer_cards = []
 human_cards = []
@@ -38,12 +39,26 @@ deal_cards(human_cards,cards)
 deal_cards(human_cards,cards)
 deal_cards(computer_cards,cards)
 
-print(f"Player cards: {sum_cards(human_cards)} <:-:> Dealer cards: {sum_cards(computer_cards)}")
+while game:
 
-if check_for_loser(human_cards) and check_for_loser(computer_cards):
-    answer = input("Hit or Stand? (H/S)").strip().lower()
-    if answer == "h":
-        deal_cards(human_cards)
-    elif answer == "s":
-        print("You did great!")
+    if check_for_loser(human_cards) and check_for_loser(computer_cards):
+        print(f"Player cards: {sum_cards(human_cards)}, number of cards hold by Player: {len(human_cards)} <:-:> Dealer cards: {sum_cards(computer_cards)}")
+        answer = input("Hit or Stand? (H/S)").strip().lower()
+        if answer == "h":
+            deal_cards(human_cards,cards)
+        elif answer == "s":
+            print("You did great!")
+            game = False
+    else:
+        print(f"Player cards: {sum_cards(human_cards)}, number of cards hold by Player: {len(human_cards)} <:-:> Dealer cards: {sum_cards(computer_cards)}")
+        game = False
+game = True
+while game:
+    if sum_cards(human_cards) > sum_cards(computer_cards) and sum_cards(computer_cards) <= 17:
+        deal_cards(computer_cards,cards)
+    else:
+        game = False
 
+
+print(f"Player cards: {sum_cards(human_cards)}, number of cards hold by Player: {len(human_cards)} \n<:-:><:-:><:-:><:-:><:-:><:-:><:-:><:-:><:-:><:-:><:-:><:-:><:-:>\nDealer cards: {sum_cards(computer_cards)}, number of cards hold by Computer: {len(computer_cards)}")
+    
