@@ -1,5 +1,9 @@
 import random
-
+'''
+cd day_11  
+cd PygameZero
+pgzrun falling.py
+'''
 WIDTH = 800
 HEIGHT = 640
 
