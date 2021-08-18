@@ -42,7 +42,7 @@ deal_cards(computer_cards,cards)
 while game:
 
     if check_for_loser(human_cards) and check_for_loser(computer_cards):
-        print(f"Player cards: {sum_cards(human_cards)}, number of cards hold by Player: {len(human_cards)} <:-:> Dealer cards: {sum_cards(computer_cards)}")
+        print(f"Player cards: {human_cards}, number of cards hold by Player: {len(human_cards)} <:-:> Dealer cards: {computer_cards[0]}")
         answer = input("Hit or Stand? (H/S)").strip().lower()
         if answer == "h":
             deal_cards(human_cards,cards)
@@ -50,7 +50,7 @@ while game:
             print("You did great!")
             game = False
     else:
-        print(f"Player cards: {sum_cards(human_cards)}, number of cards hold by Player: {len(human_cards)} <:-:> Dealer cards: {sum_cards(computer_cards)}")
+        print(f"Player cards: {human_cards}, number of cards hold by Player: {len(human_cards)} <:-:> Dealer cards: {computer_cards[0]}")
         game = False
 game = True
 while game:
@@ -60,5 +60,6 @@ while game:
         game = False
 
 
-print(f"Player cards: {sum_cards(human_cards)}, number of cards hold by Player: {len(human_cards)} \n<:-:><:-:><:-:><:-:><:-:><:-:><:-:><:-:><:-:><:-:><:-:><:-:><:-:>\nDealer cards: {sum_cards(computer_cards)}, number of cards hold by Computer: {len(computer_cards)}")
+print(f"Player cards:{human_cards} {sum_cards(human_cards)}, number of cards hold by Player: {len(human_cards)} \n<:-:><:-:><:-:><:-:><:-:><:-:><:-:><:-:><:-:><:-:><:-:><:-:><:-:>\nDealer cards: {computer_cards[0]}")
+#, number of cards hold by Computer: {len(computer_cards)}
     
