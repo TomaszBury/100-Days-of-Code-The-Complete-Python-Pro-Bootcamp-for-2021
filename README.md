@@ -50,3 +50,16 @@ https://haveibeenpwned.com/
 https://en.wikipedia.org/wiki/SAT#Percentiles_for_total_scores_(2019)
 
 https://reeborg.ca/reeborg.html?lang=en&mode=python&menu=worlds%2Fmenus%2Freeborg_intro_en.json&name=Alone&url=worlds%2Ftutorial_en%2Falone.json
+
+# **\_** ********\_\_******** .**_._** **\_** \_\_
+
+# / \_ \ / **\_**/\_ **_ \| | | / _ \_**\_****/ |\_
+
+# / /_\ \ \_\_\_\_\_ \ / \ \/| | | / /_\ \_ ** \ **\
+
+#/ | \/ \\ \_**| | | / | \ | \/| |  
+#\_\_**|** /**\_**** / \_**\_** /**_|_**| \_**\_|** /**| |**|
+
+# \/ \/ \/ \/
+
+# https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20
