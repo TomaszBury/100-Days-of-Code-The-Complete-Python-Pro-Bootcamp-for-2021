@@ -1,10 +1,11 @@
 from coffee_machine_data import MENU
 from coffee_machine_data import resources
+from coffee_machine_supply import check_resources
 
 # print(resources)
 # print(MENU)
 
-what_you_want = input("What would you like? (espresso/latte/cappuccino):")
+order = input("What would you like? (espresso/latte/cappuccino):")
 
 print("Please insert coins.")
 
@@ -34,13 +35,13 @@ def calculate_amount(quarter, dime, nickle, pennie):
 
 total_amount = calculate_amount(quarters, dimes, nickles, pennies)
 
-print(f"How much money in machine.{total_amount}")
-print(f"{what_you_want} is costing: {MENU[what_you_want]['cost']}")
-# print(f"{type(MENU[what_you_want]['cost'])}")
-# print(f"{type(total_amount)}")
-# print(f"{total_amount - MENU[what_you_want]['cost']}")
-
-print(f"Here is: {total_amount - MENU[what_you_want]['cost']:5.2f}$ in change.")
+if total_amount >= MENU[order]['cost']:
+    print(f"How much money in machine.{total_amount}")
+    print(f"{order.title()} is costing: {MENU[order]['cost']}")
+    print(f"Do we have all the ingredients. {check_resources(order)}")
+    print(f"Here is: {total_amount - MENU[order]['cost']:5.2f}$ in change.")
+else:
+    print("You put not enough.")
 
 # TODO: 1. Print Report of coffee maschine
 # TODO: 1. Prompt user by asking “​What would you like? (espresso/latte/cappuccino):​”
