@@ -24,6 +24,6 @@ current_resources_in_machine = resources
 
 # print(f"{current_resources_in_machine}")
 
-for key, x in current_resources_in_machine.items():
-    print(f"key: {key}, resources: {x}")
+# for key, x in current_resources_in_machine.items():
+#     print(f"key: {key}, resources: {x}")
 
