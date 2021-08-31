@@ -1,95 +1,136 @@
 from coffee_machine_data import MENU
 from coffee_machine_data import resources
 
+resources_in_machine = resources
+user_cash = 0.0
+ordering = True
+
+
+def report_resources(res):
+    suffix = ""
+    for key, value in res.items():
+        if key == "water" or key == "milk":
+            suffix = "ml"
+        else:
+            suffix = "g"
+        print(f"{key.title()}\t: {value}{suffix}")
+    print(f"Money\t: ${user_cash}")
+
+
+def check_user_input(from_user):
+    elements = ["espresso", "latte", "cappuccino", "coffee", "off"]
+    if from_user in elements:
+        # print("Input correct.")
+        return True
+    else:
+        print("You Have Failed Me.\nTry again.")
+        ask_user()
+    return False
+
+
+def add_resources(res, o):
+    # if res in ["espresso", "latte", "cappuccino"]:
+    #     print(f"{resources_in_machine[res]}")
+    resources_in_machine[res] += int(
+        input(
+            f"Currently in machine {resources_in_machine[res]} for {res} you need {MENU[o]['ingredients'][res]}.\n"
+            f"How much you want to add:"))
+
+
+def add_cash(cash, res, cost):
+    money = input(f"How much you want to add? You have: {cash}, {res} cost: {cost}")
+    if money.isnumeric():
+        money = float(money)
+    else:
+        add_cash(cash, res, cost)
+    return float(money) + user_cash
+
+
+def warehouse_check(o):
+    order_warehouse = {}
+    check_order = 0
+    for x, y in MENU.items():
+        # print(f"{y['ingredients']}")
+        if x == o:
+            order_warehouse = y['ingredients']
+    for x, y in order_warehouse.items():
+        # print(f"Check:{x} {y} <= {resources_in_machine[x]}")
+        if y <= resources_in_machine[x]:
+            check_order += 1
+            # print(f"\t\tCheck:{x} {y} <= {resources_in_machine[x]}")
+        elif 'y' == input("Do you want to add more stuff? (y/n):").strip().lower():
+            add_resources(x, o)
+            warehouse_check(o)
+    if check_order == 3 or (check_order == 2 and o == 'espresso'):
+        return True
+    return False
+
+
+def cash_check(o):
+    global user_cash
+    order_cost = 0.0
+    for x, y in MENU.items():
+        # print(f"{y['ingredients']}")
+        if x == o:
+            order_cost = y['cost']
+    if user_cash >= order_cost:
+        return True
+    else:
+        user_cash = add_cash(user_cash, o, order_cost)
+
+
+def balance_resources(o):
+    global user_cash
+    order_cost = 0.0
+    for x, y in MENU.items():
+        # print(f"{y['ingredients']}")
+        if x == o:
+            order_cost = y['cost']
+    user_cash -= order_cost
+
+    order_warehouse = {}
+    for x, y in MENU.items():
+        # print(f"{y['ingredients']}")
+        if x == o:
+            order_warehouse = y['ingredients']
+    for x, y in order_warehouse.items():
+        # print(f"Check:{x} {y} <= {resources_in_machine[x]}")
+        resources_in_machine[x] -= MENU[o]['ingredients'][x]
+        # print(f"{MENU[o]['ingredients'][x]}")
+
+
+def dispense_coffee(o):
+    if warehouse_check(o) and cash_check(o):
+        balance_resources(o)
+        print("Your coffee is ready.")
+    return True
+
+
+def ask_user_coffee():
+    input_user = input("What would you like? (espresso/latte/cappuccino):")
+    if check_user_input(input_user):
+        dispense_coffee(input_user)
+    else:
+        ask_user_coffee()
+
+
+def ask_user():
+    input_user = input("Coffee / report(off):").lower().strip()
+    if input_user == "coffee":
+        ask_user_coffee()
+    elif input_user == "off":
+        report_resources(resources_in_machine)
+    if check_user_input(input_user):
+        return input_user
+    return ""
+
+
 # print(current_resources_in_machine)
 # print(MENU)
-
-order = input("What would you like? (espresso/latte/cappuccino):")
-current_resources_in_machine = resources
-
-print("Please insert coins.")
-
-
-def check_for_correct_input_coins(coin):
-    while not coin.isnumeric():
-        coin = input("Only positive numbers:")
-    return int(coin)
-
-
-def check_current_resources_in_machine(user_order):
-    sufficient_current_resources_in_machine = 0
-    for key, x in MENU[user_order]['ingredients'].items():
-        print(f"Resources: {current_resources_in_machine[key]} "
-              f"vs Order: {MENU[user_order]['ingredients'][key]}")
-        if MENU[user_order]['ingredients'][key] <= current_resources_in_machine[key]:
-            # current_resources_in_machine[key] = current_resources_in_machine[key] - MENU[order]['ingredients'][key]
-            # print(f"{current_resources_in_machine[key]}")
-            sufficient_current_resources_in_machine += 1
-    if sufficient_current_resources_in_machine == 3:
-        return "Thank you for your business."
-    elif 'y' == input("Do you want add current_resources_in_machine to machine? (y/n)"):
-        add_current_resources_in_machine(user_order)
-
-
-def add_current_resources_in_machine(user_order):
-    if 'y' == input("Do you want to add difference? (y/n)"):
-        add_current_resources_in_machine_difference(user_order)
+while ordering:
+    order = ask_user()
+    if input("Next customer Y/N:?").strip().lower() == "y":
+        ordering = True
     else:
-        for key, x in current_resources_in_machine.items():
-            add_resource = int(input(f"How much you want to add? Correctly in machine {current_resources_in_machine[key]}"))
-            current_resources_in_machine[key] = current_resources_in_machine[key] + add_resource
-
-
-def add_current_resources_in_machine_difference(user_order):
-    for key, x in MENU[user_order]['ingredients'].items():
-        if MENU[user_order]['ingredients'][key] > current_resources_in_machine[key]:
-            current_resources_in_machine[key] = MENU[user_order]['ingredients'][key] - current_resources_in_machine[key]
-
-
-def remove_current_resources_in_machine(order):
-    for key, x in MENU[order]['ingredients'].items():
-        if MENU[order]['ingredients'][key] <= current_resources_in_machine[key]:
-            # print(f"current_resources_in_machine: {current_resources_in_machine[key]} vs Order: {MENU[order]['ingredients'][key]}")
-            current_resources_in_machine[key] = current_resources_in_machine[key] - MENU[order]['ingredients'][key]
-            # print(f"{current_resources_in_machine[key]}")
-
-
-def print_order(order):
-    for key, x in MENU[order]['ingredients'].items():
-        print(f"current_resources_in_machine: {current_resources_in_machine[key]} vs Order: {MENU[order]['ingredients'][key]}")
-
-
-quarters = input("How many quarters?:")
-quarters = check_for_correct_input_coins(quarters)
-
-dimes = input("How many dimes?:")
-dimes = check_for_correct_input_coins(dimes)
-
-nickles = input("How many nickles?:")
-nickles = check_for_correct_input_coins(nickles)
-
-pennies = input("How many pennies?:")
-pennies = check_for_correct_input_coins(pennies)
-
-
-def calculate_amount(quarter, dime, nickle, pennie):
-    return (quarter * 25 + dime * 10 + nickle * 5 + pennie) / 100
-
-
-total_amount = calculate_amount(quarters, dimes, nickles, pennies)
-
-if total_amount >= MENU[order]['cost']:
-    print(f"How much money in machine.{total_amount}")
-    print(f"{order.title()} is costing: {MENU[order]['cost']}")
-    print(f"Place order: {check_current_resources_in_machine(order)}, {order}")
-    print(f"Here is: {total_amount - MENU[order]['cost']:5.2f}$ in change.")
-    print(f"Your order:\n {print_order(order)}")
-else:
-    print("You put not enough.")
-
-# TODO: 1. Print Report of coffee maschine TODO: 1. Prompt user by asking “​What would you like? (
-#  espresso/latte/cappuccino):​” a. Check the user’s input to decide what to do next. b. The prompt should show every
-#  time action has completed, e.g. once the drink is dispensed. The prompt should show again to serve the next
-#  customer.
-
-# print("Hmmm")
+        print("Machine is powering off.")
+        ordering = False
