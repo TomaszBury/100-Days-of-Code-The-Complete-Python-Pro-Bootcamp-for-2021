@@ -102,7 +102,7 @@ def balance_resources(o):
 def dispense_coffee(o):
     if warehouse_check(o) and cash_check(o):
         balance_resources(o)
-        print("Your coffee is ready.")
+        print("Here is your latte. Enjoy!")
     return True
 
 
