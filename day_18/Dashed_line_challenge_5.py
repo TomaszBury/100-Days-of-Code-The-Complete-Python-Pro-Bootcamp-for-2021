@@ -6,10 +6,10 @@ tom.penup()
 tom.forward(15*30)
 tom.right(180)
 
-for _ in range(11):
-    tom.forward(30)
+for _ in range(41):
+    tom.forward(10)
     tom.penup()
-    tom.forward(30)
+    tom.forward(10)
     tom.pendown()
 
 screen = Screen()
