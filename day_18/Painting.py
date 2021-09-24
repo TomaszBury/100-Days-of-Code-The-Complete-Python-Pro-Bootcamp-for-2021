@@ -5,6 +5,9 @@ import colorgram
 tom = Turtle()
 screen = Screen()
 screen.colormode(255)
+tom.hideturtle()
+tom.penup()
+tom.speed('fastest')
 
 # Extract 6 colors from an image.
 colors = colorgram.extract('danmien_hirst_complete_sport.jpg', 15)
@@ -15,17 +18,15 @@ colors = colorgram.extract('danmien_hirst_complete_sport.jpg', 15)
 # rgb = first_color.rgb  # e.g. (255, 151, 210)
 
 tom.pensize(15)
-tom.penup()
 tom.left(180)
 tom.forward(400)
 tom.right(270)
 tom.forward(400)
 tom.left(90)
-tom.pendown()
 
-number_of_lines = 40
-length_of_color = 1
-length_of_blank = 20
+number_of_lines = 10
+length_of_color = 20
+length_of_blank = 50
 
 
 # tom.forward(100)
@@ -36,13 +37,11 @@ length_of_blank = 20
 # tom.left(90)
 
 def move_to_new_line():
-    tom.penup()
     tom.left(90)
-    tom.forward(2 * 10)
+    tom.forward(length_of_blank)
     tom.left(90)
-    tom.forward(number_of_lines * (length_of_color + length_of_blank))
+    tom.forward(number_of_lines * ( length_of_blank))
     tom.right(180)
-    tom.pendown()
 
 
 def random_color():
@@ -52,10 +51,8 @@ def random_color():
 def paint_new_line():
     for _ in range(0, number_of_lines):
         tom.color(random_color())
-        tom.forward(length_of_color)
-        tom.penup()
+        tom.dot(length_of_color)
         tom.forward(length_of_blank)
-        tom.pendown()
 
 
 for _ in range(0, number_of_lines):
