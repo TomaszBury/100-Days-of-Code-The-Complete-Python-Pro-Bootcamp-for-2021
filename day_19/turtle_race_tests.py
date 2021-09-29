@@ -14,3 +14,4 @@ tim.forward(90)
 screen = Screen()
 screen.exitonclick()
 
+# tim.heading()
