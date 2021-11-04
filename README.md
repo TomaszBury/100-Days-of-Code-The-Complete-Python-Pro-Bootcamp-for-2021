@@ -43,6 +43,9 @@ https://www.geeksforgeeks.org/generating-random-number-list-in-python/
 
 https://www.python.org/dev/peps/pep-0008/
 
+# https://docs.python.org/3/library/tkinter.html#the-packer
+# https://tcl.tk/man/tcl8.6/TkCmd/pack.htm
+
 # FUN:
 
 https://haveibeenpwned.com/
