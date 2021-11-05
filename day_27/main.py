@@ -8,7 +8,9 @@ window.minsize(width=500, height=300)
 # https://tcl.tk/man/tcl8.6/TkCmd/pack.htm
 # Label
 my_label = Label(text="I am a Label.", font=("Arial", 24, "italic"))
-my_label.pack(side="left")
+# my_label.pack(side="left")
+# my_label.place(x=100, y=200)
+my_label.grid(column=0, row=0)
 
 my_label["text"] = "New text"
 my_label.config(text="New New text")
@@ -22,13 +24,15 @@ def button_clicked():
 
 
 button = Button(text="Click Me.", command=button_clicked)
-button.pack(side="right")
+# button.pack(side="right")
+button.grid(column=1, row=1)
 
 
 # Entry
 input_on_window = Entry(width=10)
-input_on_window.pack()
-
+# input_on_window.pack()
+# cannot use geometry manager pack inside . which already has slaves managed by grid
+input_on_window.grid(column=2, row=2)
 
 # The very last thing:
 window.mainloop()
