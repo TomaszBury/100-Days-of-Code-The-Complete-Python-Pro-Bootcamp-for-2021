@@ -46,7 +46,8 @@ def save_password():
     username = username_input.get()
     user_password = password_input.get()
     new_data = {
-        address: {
+        address.lower(): {
+            "address": address,
             "email": username,
             "password": user_password,
         }
@@ -72,20 +73,23 @@ def save_password():
 
 
 def find_password():
+    website = web_address_input.get()
     try:
         with open("data.json", "r") as data_file:
             data = json.load(data_file)
-        user_name = data[web_address_input.get()]['email']
-        user_password = data[web_address_input.get()]['password']
     except FileNotFoundError:
         messagebox.showerror('Error', 'Database is empty!')
-    except KeyError:
-        messagebox.showerror("Error", "No details for the website exists.")
     else:
-        messagebox.showinfo(title="Password",
-                            message=f"E-mail / User name: {user_name}\n"
-                                    f"Your Password: {user_password}")
-        pyperclip.copy(user_password)
+        if website.lower() in data:
+            user_name = data[website]['email']
+            user_password = data[website]['password']
+            messagebox.showinfo(title="Password",
+                                message=f"Website: {data[website]['address']}\n"
+                                        f"E-mail / User name: {user_name}\n"
+                                        f"Your Password: {user_password}")
+            pyperclip.copy(user_password)
+        else:
+            messagebox.showerror("Error", "No details for the website exists.")
 
 
 # ---------------------------- UI SETUP ------------------------------- #
@@ -121,8 +125,8 @@ password_input = Entry(width=36)
 password_input.grid(column=1, row=3)
 
 # Buttons
-generate_password_button = Button(text="Search", width=15, command=find_password)
-generate_password_button.grid(column=2, row=1)
+search_button = Button(text="Search", width=15, command=find_password)
+search_button.grid(column=2, row=1)
 
 generate_password_button = Button(text="Generate Password", command=generate_password)
 generate_password_button.grid(column=2, row=3)
