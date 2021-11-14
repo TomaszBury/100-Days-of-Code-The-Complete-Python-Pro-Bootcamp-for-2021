@@ -1,4 +1,15 @@
+import smtplib
+import datetime as dt
+import random
+
+MY_EMAIL = "erica.schultz54@ethereal.email"
+PASSWORD = "AMUEYVnjQHdmDEFUu3"
+WHEN_TO_SEND = "11/14/21"
 ##################### Extra Hard Starting Project ######################
+now = dt.datetime.now()
+print(now.strftime("%x"))
+if now.strftime("%x") == WHEN_TO_SEND:
+    print("great")
 
 # 1. Update the birthdays.csv
 
