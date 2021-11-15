@@ -13,26 +13,27 @@ response.raise_for_status()
 #
 #     print("Error")
 
-print(response.text)
+# print(response.text)
 
 data = response.json()
 latitude = response.json()["iss_position"]["latitude"]
 longitude = response.json()["iss_position"]["longitude"]
-print(data)
+# print(data)
 
-print(f"latitude:{latitude}, longitude:{longitude}")
+# print(f"latitude:{latitude}, longitude:{longitude}")
 
 # https://www.latlong.net/
 parameters = {
     "lat": MY_LAT,
-    "lng": MY_LONG
+    "lng": MY_LONG,
+    "formatted": 0
 }
 
 response_sun = requests.get("https://api.sunrise-sunset.org/json", params=parameters)
 data_sun = response_sun.json()
-sunrise = data_sun["results"]["sunrise"]
-sunset = data_sun["results"]["sunset"]
+sunrise = data_sun["results"]["sunrise"].split('T')[1].split(':')[0]
+sunset = data_sun["results"]["sunset"].split('T')[1].split(':')[0]
 print(f"sunrise:{sunrise}, sunset:{sunset}")
 
 time_now = datetime.now()
-print(time_now)
+print(time_now.hour)
