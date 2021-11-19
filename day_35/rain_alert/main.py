@@ -1,11 +1,15 @@
 from typing import List, Any
-
+from twilio.rest import Client
 import requests
 
 api_key = "5c7bf8bcb5eef4c674e9e994bd27027c"
 # api_key_temp = "69f04e4613056b159c2761a9d9e664d2"
-
 url_api_onetime_call = "https://api.openweathermap.org/data/2.5/onecall"
+
+# Find your Account SID and Auth Token at twilio.com/console
+# and set the environment variables. See http://twil.io/secure
+account_sid = 'AC5bc524185462dc297c503a96996ff8fc'
+auth_token = '64d2e2d523901adcf0ffe1ffac42d5f5'
 
 # https://www.latlong.net/
 LAT_LODZ = "51.759048"
@@ -17,10 +21,12 @@ LON_WAW = 21.008490
 LAT_VANTA = 60.294410
 LON_VANTA = 25.040070
 
+LAT_BB = 49.807621
+LON_BB = 19.055840
 
 parameters_onetime_all = {
-    "lat": LAT_VANTA,
-    "lon": LON_VANTA,
+    "lat": LAT_BB,
+    "lon": LON_BB,
     "appid": api_key,
     "exclude": "current,minutely,daily"
 }
@@ -39,7 +45,7 @@ weather_data = data.json()
 #         print(f"Bring an umbrella, id:{hourly['weather'][0]['id']}")
 
 weather_slice = weather_data['hourly'][:12]
-print(weather_slice)
+# print(weather_slice)
 
 will_rain = False
 for hour_data in weather_slice:
@@ -48,4 +54,12 @@ for hour_data in weather_slice:
         will_rain = True
 
 if will_rain:
-    print("Bring an umbrella.")
+    # print("Bring an umbrella.")
+    client = Client(account_sid, auth_token)
+    message = client.messages \
+        .create(
+        body="It's ging to rain today. Remember to bring an umbrella.",
+        from_='+12184007348',
+        to='_____________'
+    )
+    print(message.status)
