@@ -1,6 +1,7 @@
 from typing import List, Any
 from twilio.rest import Client
 import requests
+import os
 
 api_key = "5c7bf8bcb5eef4c674e9e994bd27027c"
 # api_key_temp = "69f04e4613056b159c2761a9d9e664d2"
@@ -60,6 +61,6 @@ if will_rain:
         .create(
         body="It's ging to rain today. Remember to bring an umbrella.",
         from_='+12184007348',
-        to='_____________'
+        to='' # number phone
     )
     print(message.status)
