@@ -47,7 +47,7 @@ weather_data = data.json()
 
 weather_slice = weather_data['hourly'][:12]
 # print(weather_slice)
-
+print(weather_data)
 will_rain = False
 for hour_data in weather_slice:
     condition_code = (hour_data["weather"][0]['id'])
