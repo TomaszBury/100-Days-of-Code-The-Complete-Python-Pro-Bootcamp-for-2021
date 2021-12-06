@@ -1,0 +1,44 @@
+/*****************Tag Selectors********************/
+
+a{
+    color: #5584AC;
+}
+body{
+    color: #5584AC;
+    background: #F6F2D4;
+}
+h1{
+    font-size: 40px;
+    color: #22577E;
+}
+
+img:hover{
+    background-color: gold;
+}
+
+
+/*****************CLASS Selectors****************************/
+.bacon{
+    background: green;
+}
+.broccoli{
+    background: red;
+}
+.love_bacon{
+    color: #AE431E;
+}
+.circular{
+    border-radius: 100%;
+}
+
+/****************************ID SELECTORS***************************/
+/* https://colorhunt.co/palette/d06224ae431e8a8635e9c891 */
+#heading{
+    color: #5584AC;
+}
+#first_line{
+    color: #D06224;
+}
+#last_line{
+    color: #E9C891;
+}
