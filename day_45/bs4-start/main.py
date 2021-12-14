@@ -37,3 +37,15 @@ print(section_heading.getText())
 print(section_heading.name)
 print(section_heading.get("class"))
 
+company_url = soup.select_one(selector="p a")
+print(company_url)
+print(company_url.getText())
+
+name = soup.select_one(selector="#name")
+print(name.getText())
+
+headings = soup.select(".heading")
+print(headings)
+
+
+
