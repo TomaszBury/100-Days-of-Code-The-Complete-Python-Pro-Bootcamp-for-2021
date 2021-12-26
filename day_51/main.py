@@ -10,24 +10,6 @@ driver.set_window_size(1920, 1200)
 # print(driver.get_window_size())
 
 driver.get("https://www.python.org")
-events_times = driver.find_elements(By.CSS_SELECTOR, value=".event-widget time")
-
-# for time in events_times:
-#     print(time.text)
-
-events_name = driver.find_elements(By.CSS_SELECTOR, value=".event-widget li a")
-# for name in events_name:
-#     print(name.text)
-
-events = {}
-
-for n in range(0, len(events_times)):
-    events[n] = {
-        "time": events_times[n].text,
-        "name": events_name[n].text
-    }
-
-print(events)
 
 driver.quit()
 
