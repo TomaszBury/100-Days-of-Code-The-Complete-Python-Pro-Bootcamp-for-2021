@@ -40,7 +40,7 @@ for title in titles:
     house["price"] = prices[index].text
     house["location"] = locations[index * 2].text
     house["link"] = links[index].get_attribute("href")
-    print(house)
+    # print(house)
     data_to_save.append(house.copy())
 
 # print(data_to_save)
