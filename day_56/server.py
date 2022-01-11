@@ -1,11 +1,16 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
 
 @app.route("/")
-def hello_world():
-    return '<img src="https://media.giphy.com/media/13CoXDiaCcCoyk/giphy.gif">'
+def home():
+    return render_template("index.html")
+
+
+@app.route("/cv")
+def cv_home():
+    return render_template("cv/tb.html")
 
 
 if __name__ == "__main__":
