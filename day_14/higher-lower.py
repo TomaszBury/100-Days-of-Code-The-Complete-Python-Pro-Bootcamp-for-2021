@@ -4,27 +4,30 @@ from art import vs
 from random import randint
 
 # print("\nWho has more instagram followers in millions:")
-compareA = randint(0,len(data))
-compareB = randint(0,len(data))
+compareA = 0
+compareB = 0
+while compareA == compareB:
+    compareA = randint(0,len(data))
+    compareB = randint(0,len(data))
 game_on = True
 user_score = 0
 
 print(logo)
 
 while game_on:
-    print(f"Name A: {data[compareA]['name']},\n profesion: {data[compareA]['description']},\n country of birth: {data[compareA]['country']}")
+    print(f"A: {data[compareA]['name']},\n profesion: {data[compareA]['description']},\n country of birth: {data[compareA]['country']}")
 
     print(vs)
 
-    print(f"Name B: {data[compareB]['name']},\n profesion: {data[compareB]['description']},\n country of birth: {data[compareB]['country']}")
+    print(f"B: {data[compareB]['name']},\n profesion: {data[compareB]['description']},\n country of birth: {data[compareB]['country']}")
 
-    user_answer = input("Who has more followers? Type 'A' or 'B': ")
+    user_answer = input("Who has more followers? Type 'A' or 'B': ").lower().strip()
     correct_answer = ""
     if data[compareA]['follower_count'] > data[compareB]['follower_count']:
-        correct_answer = "A"
+        correct_answer = "a"
         compareB = randint(0,len(data))
     else:
-        correct_answer = "B"
+        correct_answer = "b"
         compareA = compareB
         compareB = randint(0,len(data))
 

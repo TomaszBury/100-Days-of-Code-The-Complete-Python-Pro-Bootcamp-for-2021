@@ -43,9 +43,6 @@ https://www.geeksforgeeks.org/generating-random-number-list-in-python/
 
 https://www.python.org/dev/peps/pep-0008/
 
-# https://docs.python.org/3/library/tkinter.html#the-packer
-# https://tcl.tk/man/tcl8.6/TkCmd/pack.htm
-
 # FUN:
 
 https://haveibeenpwned.com/
@@ -54,17 +51,17 @@ https://en.wikipedia.org/wiki/SAT#Percentiles_for_total_scores_(2019)
 
 https://reeborg.ca/reeborg.html?lang=en&mode=python&menu=worlds%2Fmenus%2Freeborg_intro_en.json&name=Alone&url=worlds%2Ftutorial_en%2Falone.json
 
-https://www.latlong.net/
+# **\_** **\*\*\*\***\_\_**\*\*\*\*** .**_._** **\_** \_\_
 
-# **\_** ********\_\_******** .**_._** **\_** \_\_
-
-# / \_ \ / **\_**/\_ **_ \| | | / _ \_**\_****/ |\_
+# / \_ \ / **\_**/\_ **_ \| | | / _ \_**\_\*\*\*\*/ |\_
 
 # / /_\ \ \_\_\_\_\_ \ / \ \/| | | / /_\ \_ ** \ **\
 
 #/ | \/ \\ \_**| | | / | \ | \/| |  
-#\_\_**|** /**\_**** / \_**\_** /**_|_**| \_**\_|** /**| |**|
+#\_\_**|** /**\_\***\* / \_**\_** /**_|_**| \_**\_|** /**| |\*\*|
 
 # \/ \/ \/ \/
 
 # https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20
+
+# https://www.python.org/dev/peps/pep-0008/
